@@ -55,12 +55,6 @@ if( !class_exists( 'UPRS_Disable_Email' ) ) {
 
 			echo '</form>';
 
-			echo '<pre>';
-			var_dump( $this->server_names );
-			echo '</pre>';
-
-			
-
 			if( isset( $_GET['mail_test'] ) ) {
 				$success = wp_mail( 'arjan@uprise.nl', 'test mail', 'blaaat' );
 				echo '<pre>';

@@ -132,9 +132,6 @@ if( !class_exists( 'UPRS_Disable_Email' ) ) {
 
 $UPRS_Disable_Email = new UPRS_Disable_Email();
 
-echo '<pre>';
-var_dump( $UPRS_Disable_Email->is_disabled() );
-echo '</pre>';
 // Disabled wp_mail by redefining it (long live pluggable functions, blugh)
 if( !$UPRS_Disable_Email->is_disabled() && !function_exists('wp_mail') ) {
 

@@ -131,11 +131,14 @@ if( !class_exists( 'UPRS_Disable_Email' ) ) {
 }
 
 $UPRS_Disable_Email = new UPRS_Disable_Email();
+$GLOBALS['UPRS_Disable_Email'] = $UPRS_Disable_Email;
 
 // Disabled wp_mail by redefining it (long live pluggable functions, blugh)
 if( !$UPRS_Disable_Email->is_disabled() && !function_exists('wp_mail') ) {
 
 	function wp_mail( $to = '', $subject, $message, $headers = '', $attachments = array() ) {
+		global $UPRS_Disable_Email;
+
 		// If override email is not set, just disable email. If set, overwrite $to address and send mail. Complete function is copied from pluggable.php right out of WordPress core.
 		$to = $UPRS_Disable_Email->get_override_email();
 
